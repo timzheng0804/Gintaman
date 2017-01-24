@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gintaman", "Gintaman\Gintaman\Gintaman.csproj", "{5F49B825-8513-47D4-B6C7-582590693913}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GintamanContent", "Gintaman\GintamanContent\GintamanContent.contentproj", "{C0DD1BA2-3C40-473B-BAA1-8A0CBE9D95C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F49B825-8513-47D4-B6C7-582590693913}.Debug|x86.ActiveCfg = Debug|x86
+		{5F49B825-8513-47D4-B6C7-582590693913}.Debug|x86.Build.0 = Debug|x86
+		{5F49B825-8513-47D4-B6C7-582590693913}.Release|x86.ActiveCfg = Release|x86
+		{5F49B825-8513-47D4-B6C7-582590693913}.Release|x86.Build.0 = Release|x86
+		{C0DD1BA2-3C40-473B-BAA1-8A0CBE9D95C8}.Debug|x86.ActiveCfg = Debug|x86
+		{C0DD1BA2-3C40-473B-BAA1-8A0CBE9D95C8}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
