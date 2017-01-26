@@ -20,8 +20,10 @@ namespace Gintaman
         SpriteBatch spriteBatch;
         Map map;
         Texture2D background;
+        Texture2D gameOver;
         Vector2 backgroundPos;
         Camera camera;
+        bool gameState = true;
 
         public Game1()
         {
@@ -63,6 +65,9 @@ namespace Gintaman
             // Load everything on the map
             map.LoadContent(this.Content);
 
+            // Load game Over
+            gameOver = Content.Load<Texture2D>("Sprites\\gameOver");
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -92,6 +97,12 @@ namespace Gintaman
             // update Camera
             camera.Update(gameObjs.getGinsanPos());
 
+            // Check game state
+            if (gameObjs.checkGameState())
+            {
+                gameState = false;
+            }
+
             base.Update(gameTime);
         }
 
@@ -104,17 +115,21 @@ namespace Gintaman
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            if (gameState)
+            {
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                    null, null, null, null, camera.viewMatrix);
+                // draw Background
+                spriteBatch.Draw(background, Const.origin, Color.White);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
-                null, null, null, null, camera.viewMatrix);
-
-            // draw Background
-            spriteBatch.Draw(background, Const.origin, Color.White);
-
-            // draw everything on the Map
-            map.Draw(spriteBatch);
-
-            // draw all object on tile
+                // draw everything on the Map
+                map.Draw(spriteBatch);
+            } else
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(gameOver, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, 
+                    GraphicsDevice.Viewport.Height), Color.White);
+            }
 
             spriteBatch.End();
 

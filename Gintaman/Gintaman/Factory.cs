@@ -13,7 +13,7 @@ namespace Gintaman
         public static Gintoki createGintoki ()
         {
             // 470, 800
-            return new Gintoki(new Vector2(470, 800), "Gintoki");
+            return new Gintoki(Const.ginsanBornPos, "Gintoki");
         }
 
         public static List<Shinsengumi> createShinengumi()

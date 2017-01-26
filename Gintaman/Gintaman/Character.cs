@@ -39,6 +39,15 @@ namespace Gintaman
             spriteBatch.Draw(texture, pos, Color.White);
         }
 
+        public virtual void death()
+        {
+
+        }
+
+        protected virtual void reBorn()
+        {
+
+        }
         public virtual void move ()
         {
             switch (dir)

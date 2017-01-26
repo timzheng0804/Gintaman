@@ -74,15 +74,6 @@
       <Time>2017-01-22T23:11:49.3253071+08:00</Time>
     </Item>
     <Item>
-      <Source>Sprites\0.png</Source>
-      <Name>Sprites\0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\0.xnb</Output>
-      <Time>2017-01-23T10:11:12.8605572+08:00</Time>
-    </Item>
-    <Item>
       <Source>Sprites\pudding.png</Source>
       <Name>Sprites\pudding</Name>
       <Importer>TextureImporter</Importer>
@@ -99,6 +90,24 @@
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\pudd.xnb</Output>
       <Time>2017-01-23T10:13:29.0835317+08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Touyako.png</Source>
+      <Name>Sprites\Touyako</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\Touyako.xnb</Output>
+      <Time>2017-01-23T10:11:12.8605572+08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\gameOver.jpg</Source>
+      <Name>Sprites\gameOver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\gameOver.xnb</Output>
+      <Time>2017-01-27T07:26:55.4551669+08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -15,9 +15,14 @@ namespace Gintaman
         {
             foreach(Shinsengumi s in shinsen)
             {
-                if(s.sourceRec.Intersects(ginsan.sourceRec))
+                if (s.sourceRec.Intersects(ginsan.sourceRec))
                 {
-                    ginsan.death();
+                    if (ginsan.hype) {
+                        s.death();
+                    } else if (ginsan.alive)
+                    {
+                        ginsan.death();
+                    }
                 }
             }
         }
@@ -27,9 +32,9 @@ namespace Gintaman
         {
             int ginsan_X = (int)(ginsan.pos.X / 32);
             int ginsan_Y = (int)(ginsan.pos.Y / 32);
-            Tiles currentTile = mapTiles[ginsan_Y][ginsan_X];
-            Tiles nextTile = currentTile;
             Direct direction = ginsan.dir;
+            Tiles currentTile = mapTiles[ginsan_Y][ginsan_X];
+            Tiles nextTile = findNextTile(ginsan_X, ginsan_Y, mapTiles, direction);
             int next_X = ginsan_X;
             int next_Y = ginsan_Y;
 
@@ -39,73 +44,73 @@ namespace Gintaman
                 return;
             }
 
+            // checkBound
             if (checkBound(ginsan.sourceRec, ginsan.dir))
             {
                 ginsan.collide = true;
                 return;
             }
-            // check border
 
-            #region get Next Tile
+            if (nextTile == null) return;
+
+            #region get NEXT x and Y
             switch (direction)
             {
                 case Direct.Left:
                     next_X = ginsan_X - 1;
-                    if (next_X < 0) nextTile = null;
-                    else nextTile = mapTiles[ginsan_Y][next_X];
                     break;
                 case Direct.Right:
                     next_X = ginsan_X + 1;
-                    if (next_X > 30) nextTile = null;
-                    else nextTile = mapTiles[ginsan_Y][next_X];
                     break;
                 case Direct.Down:
                     next_Y = ginsan_Y + 1;
-                    if (next_Y > 33) nextTile = null;
-                    else nextTile = mapTiles[next_Y][ginsan_X];
                     break;
                 case Direct.Up:
                     next_Y = ginsan_Y - 1;
-                    if (next_Y < 0) nextTile = null;
-                    else nextTile = mapTiles[next_Y][ginsan_X];
                     break;
                 default:
                     break;
             }
             #endregion
 
-            if (nextTile == null) return;
+            // check Items
+            Tiles up = findNextTile(next_X, next_Y, mapTiles, Direct.Up);
+            Tiles down = findNextTile(next_X, next_Y, mapTiles, Direct.Down);
+            Tiles left = findNextTile(next_X, next_Y, mapTiles, Direct.Left);
+            Tiles right = findNextTile(next_X, next_Y, mapTiles, Direct.Right);
 
+            checkItem(currentTile, ginsan);
+            checkItem(nextTile, ginsan);
+            checkItem(up, ginsan);
+            checkItem(down, ginsan);
+            checkItem(left, ginsan);
+            checkItem(right, ginsan);
+            
             #region check Tile state
             switch (nextTile.state)
             {
                 case TileState.Wall:
-                    if(ginsan.sourceRec.Intersects(nextTile.tileRec)) ginsan.collide = true;
+                    if (ginsan.sourceRec.Intersects(nextTile.tileRec)) ginsan.collide = true;
                     break;
                 case TileState.Gate:
                     ginsan.collide = true;
                     break;
-                case TileState.Item:
-                    break;
                 case TileState.Empty:
-                    if (next_Y + 1 < Const.map_y_tiles)
+                    Tiles below = findNextTile(next_X, next_Y, mapTiles, Direct.Down);
+                    Rectangle rec = ginsan.sourceRec;
+                    rec.Height -= 20;
+                    if (below != null && below.state == TileState.Wall &&
+                        rec.Intersects(below.tileRec))
                     {
-                        // check upper tile bound
-                        Tiles above = mapTiles[next_Y + 1][next_X];
-                        Rectangle halfRec = above.tileRec;
-                        halfRec.Y += 18;
-                        if (above.state == TileState.Wall &&
-                            ginsan.sourceRec.Intersects(halfRec))
-                        {
-                            ginsan.collide = true;
-                        }
+                        ginsan.collide = true;
+                        return;
                     }
                     break;
                 default:
                     ginsan.collide = false;
                     break;
             }
-            #endregion
+            #endregion 
         }
 
         // check Collision for enemies
@@ -164,6 +169,16 @@ namespace Gintaman
                 (dir == Direct.Up && rec.Intersects(Const.upperBound)) ||
                 (dir == Direct.Right && rec.Intersects(Const.rightBound)) ||
                 (dir == Direct.Down && rec.Intersects(Const.lowerBound)));
+        }
+
+        private static void checkItem(Tiles tile, Gintoki ginsan)
+        {
+            if (tile == null) return;
+            if ((tile.state == TileState.Item || tile.state == TileState.Weapon) && 
+                ginsan.sourceRec.Intersects(tile.itemRec))
+            {
+                tile.itemEaten(ginsan);
+            }
         }
     }
 }

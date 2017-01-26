@@ -12,8 +12,10 @@ namespace Gintaman
     {
         public TileState state { get; set; }
         public Rectangle tileRec;
+        public Rectangle itemRec;
         public Texture2D item;
         public Vector2 itemPos;
+        public Rectangle itemSize;
 
         public Tiles(int x, int y)
         {
@@ -25,16 +27,28 @@ namespace Gintaman
 
         public void LoadContent(ContentManager content)
         {
-            item = content.Load<Texture2D>("Sprites//pudding");
-            itemPos.X += 10;
-            itemPos.Y += 10;
+            if (state == TileState.Item)
+            {
+                item = content.Load<Texture2D>("Sprites//pudd");
+                itemPos.X += 10;
+                itemPos.Y += 10;
+                itemRec = new Rectangle((int)itemPos.X, (int)itemPos.Y, 28, 25);
+                itemSize = new Rectangle((int)itemPos.X, (int)itemPos.Y, 20, 18);
+            } else if (state == TileState.Weapon)
+            {
+                item = content.Load<Texture2D>("Sprites//Touyako");
+                itemPos.X += 10;
+                itemPos.Y += 10;
+                itemRec = new Rectangle((int)itemPos.X, (int)itemPos.Y, 28, 25);
+                itemSize = new Rectangle((int)itemPos.X, (int)itemPos.Y, 25, 18);
+            }
         }
 
         public void draw(SpriteBatch spriteBatch)
         {
-            if (state == TileState.Item)
+            if (state == TileState.Item || state == TileState.Weapon)
             {
-                spriteBatch.Draw(item, itemPos, Color.White);
+                spriteBatch.Draw(item, itemSize, Color.White);
             }
         }
 
@@ -51,6 +65,15 @@ namespace Gintaman
         {
             state = TileState.Gate;
             tileRec.Height /= 4;
+        }
+
+        public void itemEaten(Gintoki ginsan)
+        {
+            if(state == TileState.Weapon)
+            {
+                ginsan.getWeapon();
+            }
+            state = TileState.Empty;
         }
     }
 }

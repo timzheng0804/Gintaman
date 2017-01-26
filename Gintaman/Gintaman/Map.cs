@@ -34,16 +34,19 @@ namespace Gintaman
             }
 
             // initialize Items
-/*            for (int i = 0; i < Const.itemPos.Count; ++i)
+            for (int i = 0; i < Const.itemPos.Count; ++i)
             {
                 for (int j = 0; j < Const.itemPos[i].Count; ++j)
                 {
-                    if (Const.itemPos[i][j] == (int)itemType.Ice)
+                    if (Const.itemPos[i][j] == (int)itemType.Pudding)
                     {
                         tiles[i][j].state = TileState.Item;
+                    } else if (Const.itemPos[i][j] == (int)itemType.Touyako)
+                    {
+                        tiles[i][j].state = TileState.Weapon;
                     }
                 }
-            } */
+            } 
 
             // initialize walls
             for (int i = 0; i < Const.wallPos.Count; ++i)

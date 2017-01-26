@@ -22,6 +22,7 @@ C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\Ba
 C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\Stay.xnb
 C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\Death.xnb
 C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\gameMap.xnb
-C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\0.xnb
 C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\pudding.xnb
 C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\pudd.xnb
+C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\Touyako.xnb
+C:\Users\Tim\Desktop\Gintaman\Gintaman\Gintaman\bin\x86\Debug\Content\Sprites\gameOver.xnb

@@ -14,13 +14,18 @@ namespace Gintaman
         private Texture2D stay;
         public Rectangle sourceRec;
         public bool collide = false;
-        
+        private int elapsedTime;
+        private int deathTimer;
+        public int life { get; private set; }
+        public bool hype { get; private set; }
+        public bool gameOver = false;
 
         public Gintoki (Vector2 pos, string textureName) : base(pos)
         {
             this.textureName = textureName;
             dir = Direct.Stay;
             animate = new Animation();
+            life = 3;
         }
 
         public override void LoadContent(ContentManager content)
@@ -39,7 +44,28 @@ namespace Gintaman
             // update Rec
             sourceRec.X = (int)pos.X;
             sourceRec.Y = (int)pos.Y;
+            if (hype)
+            {
+                elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if(elapsedTime > Const.hypeTime)
+                {
+                    hype = false;
+                    elapsedTime = 0;
+                    speed = Const.characterSpeed;
+                }
 
+            }
+            if(!alive && life >= 0)
+            {
+                deathTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (deathTimer > Const.deathTimer)
+                {
+                    alive = true;
+                    deathTimer = 0;
+                    reBorn();
+                    --life;
+                }
+            }
             animate.Update(gameTime, (int)dir);
         }
 
@@ -65,7 +91,12 @@ namespace Gintaman
             if(this.dir != dir) this.dir = dir;
         }
 
-        public void death()
+        protected override void reBorn()
+        {
+            pos = Const.ginsanBornPos;
+        }
+
+        public override void death()
         {
             alive = false;
         }
@@ -86,6 +117,13 @@ namespace Gintaman
             {
                 pos = new Vector2(50, pos.Y);
             }
+        }
+
+        public void getWeapon()
+        {
+            hype = true;
+            speed = Const.hypeSpeed;
+            elapsedTime = 0;
         }
     }
 }

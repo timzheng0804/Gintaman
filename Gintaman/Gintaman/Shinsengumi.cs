@@ -36,7 +36,7 @@ namespace Gintaman
             if (needToChange)
             {
                 elpasedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-                if (elpasedTime > 70)
+                if (elpasedTime > 60)
                 {
                     dir = nextDir;
                     needToChange = false;
@@ -57,6 +57,16 @@ namespace Gintaman
         public override void Draw(SpriteBatch spriteBatch)
         {
             animate.Draw(spriteBatch, pos);
+        }
+
+        protected override void reBorn()
+        {
+            pos = Const.shinsenBornPos;
+        }
+
+        public override void death()
+        {
+            reBorn();
         }
 
         public void randomMove(List<List<Tiles>> mapTiles)

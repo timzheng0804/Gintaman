@@ -86,10 +86,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\0.png">
-      <Name>0</Name>
+    <Compile Include="Sprites\Touyako.png">
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <Name>Touyako</Name>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +102,13 @@
   <ItemGroup>
     <Compile Include="Sprites\pudd.png">
       <Name>pudd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\gameOver.jpg">
+      <Name>gameOver</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

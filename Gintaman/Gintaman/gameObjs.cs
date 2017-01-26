@@ -59,7 +59,7 @@ namespace Gintaman
 
         public static void checkCollision(List<List<Tiles>> mapTiles)
         {
-        //    Collision.checkEnemyCollision(ginsan, shinsengumi);
+            Collision.checkEnemyCollision(ginsan, shinsengumi);
             Collision.checkMapCollision(ginsan, mapTiles);
             foreach(Shinsengumi s in shinsengumi)
             {
@@ -73,6 +73,11 @@ namespace Gintaman
             {
                 s.randomMove(mapTiles);
             }
+        }
+
+        public static bool checkGameState()
+        {
+            return ginsan.life == 0;
         }
     }
 }

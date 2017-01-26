@@ -6,6 +6,7 @@ Content\Sprites\Background.xnb
 Content\Sprites\Stay.xnb
 Content\Sprites\Death.xnb
 Content\Sprites\gameMap.xnb
-Content\Sprites\0.xnb
 Content\Sprites\pudding.xnb
 Content\Sprites\pudd.xnb
+Content\Sprites\Touyako.xnb
+Content\Sprites\gameOver.xnb
